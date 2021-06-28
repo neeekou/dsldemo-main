@@ -1,17 +1,23 @@
 pipeline {
     agent any
     triggers {
-        cron('* * * * *')
+        cron('5 * * * *')
     }
     environment {
     DOT_NET="C:\\Program Files\\dotnet\\dotnet.exe"
     DOT_NET_COMPILER="dotnet"
     }
     stages {
-        stage('Check Environment') {
+        stage('Check Compiler') {
             steps {
+                echo 'Checking env...'
                 bat """$DOT_NET_COMPILER --version"""
-                echo 'Testing..'
+            }
+        }
+        stage('Build') {
+            when { branch not 'main' }
+            steps {
+                echo 'Not in main..'
             }
         }
         stage('Build') {
