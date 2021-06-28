@@ -27,10 +27,11 @@ pipeline {
             parallel {
                 stage('Pre-build 1') {
                     steps {
-                        def workspace = pwd()
-                        echo workspace
-                        def externalMethod = load("pipeline.groovy")
-                        externalMethod.firstTest()
+                        script {
+                            for(x in 1..5){
+                                println x
+                            }
+                        }
                     }
                 }
                 stage('Pre-build 2') {
