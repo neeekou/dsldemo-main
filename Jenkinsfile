@@ -51,7 +51,7 @@ pipeline {
         }
         stage('Build Tests') {
             steps {
-                bat """$DOT_NET_COMPILER build Calculator"""
+                bat """$DOT_NET_COMPILER test CalculatorTests"""
             }
         }
         stage('Build App') {
