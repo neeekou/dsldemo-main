@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    node {
+        def rootDir = pwd()
+        def exampleModule = load "${rootDir}@script/pipeline.groovy"
+    }
     triggers {
         cron('5 * * * *')
     }
@@ -24,18 +28,18 @@ pipeline {
             }
         }
         stage('Pre-Build') {
-                parallel {
-                    stage('Pre-build 1') {
-                        steps {
-                            echo 'Deploying....'
-                        }
-                    }
-                    stage('Pre-build 2') {
-                        steps {
-                        echo 'Deploying....'
-                        }
+            parallel {
+                stage('Pre-build 1') {
+                    steps {
+                        exampleModule.firstTest()
                     }
                 }
+                stage('Pre-build 2') {
+                    steps {
+                        echo 'Deploying....'
+                    }
+                }
+            }
         }
         stage('Deploy') {
             steps {
