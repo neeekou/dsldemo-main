@@ -16,8 +16,11 @@ pipeline {
         }
         stage('Check env') {
             when { not {branch 'main'} }
+            environment { 
+                INSTANCE = "test
+            }
             steps {
-                echo 'Not in main..'
+                echo $test
             }
         }
         stage('Build') {
