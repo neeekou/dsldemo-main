@@ -8,6 +8,24 @@ pipeline {
     DOT_NET_COMPILER="dotnet"
     }
     stages {
+        stage('Setup parameters') {
+            steps {
+                script { 
+                    properties([
+                        parameters([
+                            choice(
+                                choices: ['x32', 'x64'], 
+                                name: 'CPU'
+                            )
+                            choice(
+                                choices: ['8', '16','32'], 
+                                name: 'RAM'
+                            )
+                        ])
+                    ])
+                }
+            }
+        }
         stage('Check Compiler') {
             steps {
                 echo 'Checking env...'
