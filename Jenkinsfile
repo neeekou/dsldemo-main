@@ -55,8 +55,10 @@ pipeline {
             }
         }
         stage('Build App') {
-            when { 
-                environment name: 'INSTANCE', value: 'PROD'
+            when {
+                anyOf {
+                    environment name: 'INSTANCE', value: 'PROD'
+                }
             }
             steps {
                 bat """$DOT_NET_COMPILER build Calculator"""
