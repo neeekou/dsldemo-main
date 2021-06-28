@@ -5,6 +5,7 @@ pipeline {
     }
     environment {
     DOT_NET="C:\\Program Files\\dotnet\\dotnet.exe"
+    DOT_NET_COMPILER="dotnet"
     }
     stages {
         stage('Build') {
@@ -14,7 +15,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                bat """$DOT_NET --version"""
+                bat """$DOT_NET_COMPILER --version"""
                 echo 'Testing..'
             }
         }
