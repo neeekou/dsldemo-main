@@ -37,35 +37,13 @@ pipeline {
                 stage('Pre-build 2') {
                     steps {
                         script {
-                            class Student {
-                               private int StudentID;
-                               private String StudentName;
-	
-                               void setStudentID(int pID) {
-                                  StudentID = pID;
-                               }
-	
-                               void setStudentName(String pName) {
-                                  StudentName = pName;
-                               }
-	
-                               int getStudentID() {
-                                  return this.StudentID;
-                               }
-	
-                               String getStudentName() {
-                                  return this.StudentName;
-                               }
-	
-                               static void main(String[] args) {
-                                  Student st = new Student();
-                                  st.setStudentID(1);
-                                  st.setStudentName("Joe");
-		
-                                  println(st.getStudentID());
-                                  println(st.getStudentName());
-                               } 
+                            try {
+                                def arr = new int[3];
+                                arr[5] = 5;
+                            } catch(Exception ex) {
+                            println("Catching the exception");
                             }
+                            println("Let's move on after the exception");
                         }
                     }
                 }
