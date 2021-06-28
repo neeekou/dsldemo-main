@@ -17,15 +17,25 @@ pipeline {
         stage('Check env') {
             when { not {branch 'main'} }
             environment { 
-                INSTANCE = "test"
+                INSTANCE = "TEST"
             }
             steps {
                 bat "echo $INSTANCE"
             }
         }
-        stage('Build') {
+        stage('Pre-Build') {
             steps {
-                echo 'Building..'
+                parallel (
+                "Taskone" : {
+                    for(x in 1...5){
+                    println x
+                    }
+                }
+                "Tasktwo" : {
+                    for(x in 6...10){
+                    println x
+                    }
+                }
             }
         }
         stage('Deploy') {
