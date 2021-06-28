@@ -24,7 +24,6 @@ pipeline {
             }
         }
         stage('Pre-Build') {
-            steps {
                 parallel {
                     stage('Pre-build 1') {
                         steps {
@@ -37,7 +36,6 @@ pipeline {
                         }
                     }
                 }
-            }
         }
         stage('Deploy') {
             steps {
