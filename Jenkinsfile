@@ -62,6 +62,13 @@ pipeline {
                 bat """$DOT_NET_COMPILER build Calculator"""
             }
         }
-
+        stage('Clean') {
+            steps {
+                echo 'Cleaning Calculator bin catalog...'
+                bat """rm -R .\Calculator\bin"""
+                echo 'Cleaning CalculatorTests catalog...'
+                bat """rm -R .\CalculatorTests\bin"""
+            }
+        }
     }
 }
