@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                bat "$DOT_NET\\dotnet.exe --version""
+                bat "$DOT_NET\\dotnet.exe --version"
                 echo 'Testing..'
             }
         }
