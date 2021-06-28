@@ -65,9 +65,9 @@ pipeline {
         stage('Clean') {
             steps {
                 echo 'Cleaning Calculator bin catalog...'
-                bat """del Calculator\bin"""
+                bat """del Calculator\\bin"""
                 echo 'Cleaning CalculatorTests catalog...'
-                bat """del CalculatorTests\bin"""
+                bat """del CalculatorTests\\bin"""
             }
         }
     }
