@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Pre-Build') {
             steps {
-                parallel (
+                parallel {
                     "Taskone" : {
                         for(x in 1..5){
                         println x
@@ -36,7 +36,7 @@ pipeline {
                         println x
                         }
                     }
-                )
+                }
             }
         }
         stage('Deploy') {
