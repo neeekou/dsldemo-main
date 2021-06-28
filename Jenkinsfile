@@ -20,7 +20,7 @@ pipeline {
                 INSTANCE = "test"
             }
             steps {
-                sh "echo $INSTANCE"
+                bat "echo $INSTANCE"
             }
         }
         stage('Build') {
