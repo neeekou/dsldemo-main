@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    node {
-        def rootDir = pwd()
-        def exampleModule = load "${rootDir}@script/pipeline.groovy"
-    }
     triggers {
         cron('5 * * * *')
     }
@@ -31,7 +27,8 @@ pipeline {
             parallel {
                 stage('Pre-build 1') {
                     steps {
-                        exampleModule.firstTest()
+                        def externalMethod = load("pipeline.groovy")
+                        externalMethod.firstTest()
                     }
                 }
                 stage('Pre-build 2') {
