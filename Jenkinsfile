@@ -55,6 +55,10 @@ pipeline {
             }
         }
         stage('Build App') {
+            when { anyOf {branch 'main'} }
+            environment { 
+                INSTANCE = "PROD"
+            }
             when {
                 anyOf {
                     environment name: 'INSTANCE', value: 'PROD'
