@@ -26,17 +26,18 @@ pipeline {
         stage('Pre-Build') {
             steps {
                 parallel (
-                "Taskone" : {
-                    for(x in 1..5){
-                    println x
+                    "Taskone" : {
+                        for(x in 1..5){
+                        println x
+                        }
                     }
-                }
-                "Tasktwo" : {
-                    for(x in 6..10){
-                    println x
+                    "Tasktwo" : {
+                        for(x in 6..10){
+                        println x
+                        }
                     }
-                }
-            )
+                )
+            }
         }
         stage('Deploy') {
             steps {
