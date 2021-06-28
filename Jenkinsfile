@@ -26,14 +26,14 @@ pipeline {
         stage('Pre-Build') {
             steps {
                 parallel {
-                    "Taskone" : {
-                        for(x in 1..5){
-                        println x
+                    stage('Pre-build 1') {
+                        steps {
+                            echo 'Deploying....'
                         }
-                    },
-                    "Tasktwo" : {
-                        for(x in 6..10){
-                        println x
+                    }
+                    stage('Pre-build 2') {
+                        steps {
+                        echo 'Deploying....'
                         }
                     }
                 }
