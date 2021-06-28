@@ -30,7 +30,7 @@ pipeline {
                         for(x in 1..5){
                         println x
                         }
-                    }
+                    },
                     "Tasktwo" : {
                         for(x in 6..10){
                         println x
