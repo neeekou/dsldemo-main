@@ -64,6 +64,7 @@ pipeline {
         }
         stage('Clean') {
             steps {
+                wpisuje bez sensu b³¹d
                 echo 'Cleaning Calculator bin catalog...'
                 bat """del /S/Q Calculator\\bin"""
                 echo 'Cleaning CalculatorTests catalog...'
