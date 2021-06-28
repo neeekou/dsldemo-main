@@ -15,9 +15,9 @@ pipeline {
             }
         }
         stage('Check env') {
-            when { not {branch 'main'} }
+            when { anyOf {branch 'main'} }
             environment { 
-                INSTANCE = "TEST"
+                INSTANCE = "PROD"
             }
             steps {
                 bat "echo $INSTANCE"
@@ -49,10 +49,19 @@ pipeline {
                 }
             }
         }
-        stage('Build') {
+        stage('Build Tests') {
             steps {
                 bat """$DOT_NET_COMPILER build Calculator"""
             }
         }
+        stage('Build App') {
+            when { 
+                environment name: 'INSTANCE', value: 'PROD'
+            }
+            steps {
+                bat """$DOT_NET_COMPILER build Calculator"""
+            }
+        }
+
     }
 }
