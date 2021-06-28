@@ -4,7 +4,7 @@ pipeline {
         cron('* * * * *')
     }
     environment {
-    DOT_NET="C:\\Program Files\\dotnet"
+    DOT_NET="'C:\\Program Files\\dotnet'"
     }
     stages {
         stage('Build') {
