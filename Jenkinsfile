@@ -14,7 +14,7 @@ pipeline {
                 bat """$DOT_NET_COMPILER --version"""
             }
         }
-        stage('Check env') 
+        stage('Check env') {
             when { not {branch 'main'} }
             steps {
                 echo 'Not in main..'
