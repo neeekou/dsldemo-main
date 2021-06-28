@@ -27,6 +27,8 @@ pipeline {
             parallel {
                 stage('Pre-build 1') {
                     steps {
+                        def workspace = pwd()
+                        echo workspace
                         def externalMethod = load("pipeline.groovy")
                         externalMethod.firstTest()
                     }
