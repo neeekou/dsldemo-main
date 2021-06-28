@@ -64,7 +64,6 @@ pipeline {
         }
         stage('Clean') {
             steps {
-                wpisuje bez sensu b³¹d
                 echo 'Cleaning Calculator bin catalog...'
                 bat """del /S/Q Calculator\\bin"""
                 echo 'Cleaning CalculatorTests catalog...'
@@ -73,10 +72,15 @@ pipeline {
         }
     }
     post {
-    failure {
-        mail to: 'neeekou@gmail.com',
-             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-             body: "Something is wrong with ${env.BUILD_URL}"
+        failure {
+            mail to: 'neeekou@gmail.com',
+                 subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "Build finished FAILURE"
+        }
+        success {
+            mail to: 'neeekou@gmail.com',
+                 subject: "OK Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "Build finished SUCCESS"
+        }
     }
-}
 }
