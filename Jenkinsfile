@@ -36,7 +36,7 @@ pipeline {
                     println x
                     }
                 }
-            }
+            )
         }
         stage('Deploy') {
             steps {
