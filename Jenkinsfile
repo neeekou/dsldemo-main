@@ -16,7 +16,7 @@ pipeline {
                             choice(
                                 choices: ['x32', 'x64'], 
                                 name: 'CPU'
-                            )
+                            ),
                             choice(
                                 choices: ['8', '16','32'], 
                                 name: 'RAM'
