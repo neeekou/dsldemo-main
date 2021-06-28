@@ -4,7 +4,7 @@ pipeline {
         cron('* * * * *')
     }
     environment {
-    DOT_NET="'C:\\Program Files\\dotnet'"
+    DOT_NET="C:\\Program Files\\dotnet\\dotnet.exe"
     }
     stages {
         stage('Build') {
@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                bat "$DOT_NET\\dotnet.exe --version"
+                bat "$DOT_NET --version"
                 echo 'Testing..'
             }
         }
