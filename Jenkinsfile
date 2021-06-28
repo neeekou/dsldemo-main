@@ -49,9 +49,9 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('Build') {
             steps {
-                echo 'Deploying....'
+                bat """$DOT_NET_COMPILER build Calculator"""
             }
         }
     }
