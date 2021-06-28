@@ -17,10 +17,10 @@ pipeline {
         stage('Check env') {
             when { not {branch 'main'} }
             environment { 
-                INSTANCE = "test
+                INSTANCE = "test"
             }
             steps {
-                echo '$test'
+                echo '$INSTANCE'
             }
         }
         stage('Build') {
