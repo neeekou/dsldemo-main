@@ -8,15 +8,15 @@ pipeline {
     DOT_NET_COMPILER="dotnet"
     }
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
+        stage('Check Environment') {
             steps {
                 bat """$DOT_NET_COMPILER --version"""
                 echo 'Testing..'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building..'
             }
         }
         stage('Deploy') {
