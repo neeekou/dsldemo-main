@@ -55,14 +55,8 @@ pipeline {
             }
         }
         stage('Build App') {
-            when { anyOf {branch 'main'} }
-            environment { 
-                INSTANCE = "PROD"
-            }
             when {
-                anyOf {
-                    environment name: 'INSTANCE', value: 'PROD'
-                }
+                branch 'main'
             }
             steps {
                 bat """$DOT_NET_COMPILER build Calculator"""
@@ -84,9 +78,7 @@ pipeline {
                  body: "Build finished FAILURE"
         }
         success {
-            mail to: 'neeekou@gmail.com',
-                 subject: "OK Pipeline: ${currentBuild.fullDisplayName}",
-                 body: "Build finished SUCCESS"
+            echo 'Build finished SUCCESS'
         }
     }
 }
